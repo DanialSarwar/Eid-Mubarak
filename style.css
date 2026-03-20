@@ -130,7 +130,7 @@ body {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     width: 130px; height: 130px; border-radius: 50%;
     /* User update: Change Moon's Color crescent shape to bright white */
-    box-shadow: 20px 10px 0 0 #ffffff; /* Bright, brilliant white crescent */
+    box-shadow: 35px 15px 0 0 #ffffff; /* Bright, brilliant white crescent */
     opacity: 0;
 }
 .moon::before {
