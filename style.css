@@ -140,7 +140,7 @@ body {
     top: 50%;
     left: 50%;
     /* -80deg tilt pushes the 'face' of the moon to the bottom and the tips UP */
-    transform: translate(-50%, -50%) rotate(-80deg); 
+    transform: translate(-50%, -50%) rotate(-35deg); 
     width: 130px;
     height: 130px;
     border-radius: 50%;
