@@ -129,6 +129,9 @@ body {
 /* =========================================
    Very Thin, Sharp White Crescent
    ========================================= */
+/* =========================================
+   Fixed Sharp Crescent (No Spill)
+   ========================================= */
 .moon {
     position: absolute; 
     top: 50%; 
@@ -138,34 +141,37 @@ body {
     height: 130px; 
     border-radius: 50%;
     
-    /* Increased offsets to create a thin sliver */
-    box-shadow: 38px 18px 0 0 #ffffff; 
+    /* 1. Dark background for the silhouette */
+    background: rgba(1, 18, 14, 0.5); 
+    
+    /* 2. INSET shadow: Puts the light inside so it never spills */
+    /* -15px (moves light to right edge), 5px (tilts it slightly) */
+    box-shadow: inset -15px 5px 0 0 #ffffff; 
     
     opacity: 0;
     pointer-events: none;
+    z-index: 2;
 }
 
 .moon::before { 
     content: ''; 
     position: absolute; 
-    
-    /* Realigned the glow to sit behind the thinner curve */
-    top: 18px; 
-    left: 38px; 
-    
+    /* Centers the glow perfectly behind the circle */
+    top: 0; 
+    left: 0; 
     width: 100%; 
     height: 100%; 
     border-radius: 50%; 
     
     /* Soft golden atmospheric glow */
-    box-shadow: 0 0 60px 20px rgba(251, 220, 115, 0.25); 
+    box-shadow: 0 0 60px 20px rgba(251, 220, 115, 0.2); 
+    z-index: -1;
 }
 
-/* Animation trigger (stays the same) */
+/* Animation trigger */
 body.unboxed .moon { 
     animation: moonRise 3s ease-out 0.5s forwards; 
 }
-
 /* =========================================
    Glassmorphism Card & Text
    ========================================= */
