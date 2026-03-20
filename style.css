@@ -1,8 +1,9 @@
 /* =========================================
    Base Setup & Romantic Background
    ========================================= */
-   body {
+body {
     margin: 0; padding: 0;
+    /* Warmer, softer romantic gradient background */
     background: radial-gradient(circle at center, #2e102e 0%, #160a1c 100%);
     height: 100vh; display: flex; justify-content: center; align-items: center;
     font-family: 'Poppins', sans-serif; overflow: hidden; color: #fff;
@@ -10,7 +11,7 @@
 .night-sky { position: relative; width: 100vw; height: 100vh; }
 
 /* =========================================
-   Feature 1: The Intro Screen
+   Feature: The Intro Screen
    ========================================= */
 #intro-screen {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -33,7 +34,7 @@
 }
 
 /* =========================================
-   Feature 2: Magic Touch Sparkles
+   Feature: Magic Touch Sparkles
    ========================================= */
 .magic-sparkle {
     position: absolute; width: 4px; height: 4px; background-color: #ffaaaf;
@@ -91,7 +92,7 @@
 .star-2 { top: 30%; left: -10%; animation-delay: 2.5s; animation-duration: 6s; }
 
 /* =========================================
-   Swinging Lantern
+   Swinging Lantern (Soft Rose Gold Metal)
    ========================================= */
 .lantern-container {
     position: absolute; top: 0; right: 15%; display: flex; flex-direction: column;
@@ -106,35 +107,54 @@
     width: 46px; height: 60px; background-color: rgba(255, 209, 220, 0.05); border: 3px solid #e8a5b2; border-radius: 8px; position: relative;
     display: flex; justify-content: center; align-items: center; box-shadow: inset 0 0 15px rgba(255, 170, 175, 0.2);
 }
+
+/* =========================================
+   Lantern Candle (New Warm Yellow Light)
+   ========================================= */
 .lantern-candle {
-    width: 12px; height: 20px; background-color: #ffdae0; border-radius: 50% 50% 20% 20%;
-    box-shadow: 0 0 20px 10px rgba(255, 138, 164, 1), 0 0 40px 20px rgba(224, 107, 133, 0.8); animation: flicker 1.5s infinite alternate;
+    width: 12px; height: 20px;
+    /* User update: Change core lamp's light to warm yellow */
+    background-color: #fff8b0; /* Warm golden-yellow */
+    border-radius: 50% 50% 20% 20%;
+    /* User update: Warm yellow core shadow, preserved soft flickering pink ambient glow */
+    box-shadow: 0 0 20px 10px rgba(255, 240, 0, 1), /* Inner golden-yellow core */
+                0 0 40px 20px rgba(224, 107, 133, 0.8); /* Outer pink-rose ambient glow cast light (preserved) */
+    animation: flicker 1.5s infinite alternate;
 }
 .lantern-base { width: 30px; height: 12px; background-color: #e8a5b2; border-radius: 0 0 5px 5px; margin-top: -2px; }
 
 /* =========================================
-   Delayed Animations (Triggered after click)
+   Soft Rose Moon (New Bright White Moon, Pink Glow)
    ========================================= */
 .moon {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 140px; height: 140px; border-radius: 50%; box-shadow: 25px 15px 0 0 #ffbcc0; opacity: 0;
+    width: 140px; height: 140px; border-radius: 50%;
+    /* User update: Change Moon's Color crescent shape to bright white */
+    box-shadow: 25px 15px 0 0 #ffffff; /* Bright, brilliant white crescent */
+    opacity: 0;
 }
 .moon::before {
     content: ''; position: absolute; top: 15px; left: 25px; width: 100%; height: 100%;
-    border-radius: 50%; box-shadow: 0 0 70px 25px rgba(255, 170, 175, 0.4);
+    border-radius: 50%;
+    /* User update: Preserve the large, flickering soft rose pink atmospheric halo glow */
+    box-shadow: 0 0 70px 25px rgba(255, 170, 175, 0.4); /* Preserved soft pink atmospheric glow halo */
 }
-/* ONLY animate the moon when the unboxed class is added */
+
+/* Only animate the moon when the 'unboxed' class is added to the body */
 body.unboxed .moon {
     animation: moonRise 3s ease-out 0.5s forwards;
 }
 
+/* =========================================
+   Glassmorphism Card & Text
+   ========================================= */
 .greeting-card {
     position: absolute; top: 65%; left: 50%; transform: translate(-50%, 0);
     width: 85%; max-width: 500px; background: rgba(255, 209, 220, 0.04);
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 209, 220, 0.18);
     padding: 35px 45px; border-radius: 20px; text-align: center; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5); opacity: 0; z-index: 10;
 }
-/* ONLY animate the card when the unboxed class is added */
+/* Only animate the card when the 'unboxed' class is added */
 body.unboxed .greeting-card {
     animation: fadeInCard 2s ease-out 2.5s forwards;
 }
