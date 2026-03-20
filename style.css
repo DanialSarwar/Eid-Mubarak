@@ -132,6 +132,9 @@ body {
 /* =========================================
    Fixed Sharp Crescent (No Spill)
    ========================================= */
+/* =========================================
+   Fixed Sharp Upright Crescent (No Spill)
+   ========================================= */
 .moon {
     position: absolute; 
     top: 50%; 
@@ -141,12 +144,14 @@ body {
     height: 130px; 
     border-radius: 50%;
     
-    /* 1. Dark background for the silhouette */
-    background: rgba(1, 18, 14, 0.5); 
+    /* Dark silhouette body */
+    background: rgba(1, 18, 14, 0.4); 
     
-    /* 2. INSET shadow: Puts the light inside so it never spills */
-    /* -15px (moves light to right edge), 5px (tilts it slightly) */
-    box-shadow: inset -15px 5px 0 0 #ffffff; 
+    /* INSET Shadow Fix:
+       -8px: Creates a thin sliver on the right edge.
+       0: Keeps it perfectly upright (no downward tilt).
+    */
+    box-shadow: inset -8px 0 0 0 #ffffff; 
     
     opacity: 0;
     pointer-events: none;
@@ -156,19 +161,18 @@ body {
 .moon::before { 
     content: ''; 
     position: absolute; 
-    /* Centers the glow perfectly behind the circle */
     top: 0; 
     left: 0; 
     width: 100%; 
     height: 100%; 
     border-radius: 50%; 
     
-    /* Soft golden atmospheric glow */
+    /* Centers the golden atmospheric glow perfectly */
     box-shadow: 0 0 60px 20px rgba(251, 220, 115, 0.2); 
     z-index: -1;
 }
 
-/* Animation trigger */
+/* Animation trigger stays the same */
 body.unboxed .moon { 
     animation: moonRise 3s ease-out 0.5s forwards; 
 }
