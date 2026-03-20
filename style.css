@@ -1,59 +1,77 @@
 /* =========================================
    Base Setup & Romantic Background
    ========================================= */
-body {
-    margin: 0;
-    padding: 0;
+   body {
+    margin: 0; padding: 0;
     background: radial-gradient(circle at center, #2e102e 0%, #160a1c 100%);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
-    color: #fff;
+    height: 100vh; display: flex; justify-content: center; align-items: center;
+    font-family: 'Poppins', sans-serif; overflow: hidden; color: #fff;
+}
+.night-sky { position: relative; width: 100vw; height: 100vh; }
+
+/* =========================================
+   Feature 1: The Intro Screen
+   ========================================= */
+#intro-screen {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #160a1c; z-index: 100; display: flex;
+    justify-content: center; align-items: center;
+    transition: opacity 1s ease-in-out;
+}
+#open-btn {
+    background: rgba(255, 138, 164, 0.1); border: 1px solid rgba(255, 138, 164, 0.5);
+    color: #ffaaaf; padding: 15px 30px; font-size: 1.2rem; border-radius: 30px;
+    cursor: pointer; font-family: 'Playfair Display', serif; letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(255, 138, 164, 0.2);
+    animation: btnPulse 2s infinite alternate; transition: all 0.3s;
+}
+#open-btn:hover { background: rgba(255, 138, 164, 0.3); transform: scale(1.05); }
+
+@keyframes btnPulse {
+    0% { box-shadow: 0 0 10px rgba(255, 138, 164, 0.2); }
+    100% { box-shadow: 0 0 25px rgba(255, 138, 164, 0.6); }
 }
 
-.night-sky { position: relative; width: 100vw; height: 100vh; }
+/* =========================================
+   Feature 2: Magic Touch Sparkles
+   ========================================= */
+.magic-sparkle {
+    position: absolute; width: 4px; height: 4px; background-color: #ffaaaf;
+    border-radius: 50%; pointer-events: none; z-index: 99;
+    box-shadow: 0 0 10px 2px #ffaaaf; transform: translate(-50%, -50%);
+    animation: sparkleFade 0.8s forwards ease-out;
+}
+@keyframes sparkleFade {
+    0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, 15px) scale(0.2); }
+}
 
 /* =========================================
    Floating Hearts
    ========================================= */
 .heart {
-    position: absolute;
-    bottom: -10%;
-    background-color: rgba(255, 138, 164, 0.7);
-    transform: rotate(-45deg);
-    animation: floatUp 10s infinite ease-in;
-    box-shadow: 0 0 15px rgba(255, 138, 164, 0.5);
-    z-index: 2;
+    position: absolute; bottom: -10%; background-color: rgba(255, 138, 164, 0.7);
+    transform: rotate(-45deg); animation: floatUp 10s infinite ease-in;
+    box-shadow: 0 0 15px rgba(255, 138, 164, 0.5); z-index: 2;
 }
 .heart::before, .heart::after {
-    content: ''; position: absolute;
-    background-color: rgba(255, 138, 164, 0.7);
-    border-radius: 50%;
+    content: ''; position: absolute; background-color: rgba(255, 138, 164, 0.7); border-radius: 50%;
 }
-
 .heart1 { width: 16px; height: 16px; left: 15%; animation-duration: 9s; animation-delay: 1s; }
 .heart1::before { width: 16px; height: 16px; top: -8px; left: 0; }
 .heart1::after { width: 16px; height: 16px; top: 0; left: 8px; }
-
 .heart2 { width: 10px; height: 10px; left: 40%; animation-duration: 13s; animation-delay: 5s; opacity: 0.5; }
 .heart2::before { width: 10px; height: 10px; top: -5px; left: 0; }
 .heart2::after { width: 10px; height: 10px; top: 0; left: 5px; }
-
 .heart3 { width: 22px; height: 22px; left: 70%; animation-duration: 8s; animation-delay: 0s; }
 .heart3::before { width: 22px; height: 22px; top: -11px; left: 0; }
 .heart3::after { width: 22px; height: 22px; top: 0; left: 11px; }
-
 .heart4 { width: 12px; height: 12px; left: 85%; animation-duration: 11s; animation-delay: 7s; }
 .heart4::before { width: 12px; height: 12px; top: -6px; left: 0; }
 .heart4::after { width: 12px; height: 12px; top: 0; left: 6px; }
-
 .heart5 { width: 14px; height: 14px; left: 30%; animation-duration: 12s; animation-delay: 3s; opacity: 0.6; }
 .heart5::before { width: 14px; height: 14px; top: -7px; left: 0; }
 .heart5::after { width: 14px; height: 14px; top: 0; left: 7px; }
-
 .heart6 { width: 18px; height: 18px; left: 55%; animation-duration: 10s; animation-delay: 2s; }
 .heart6::before { width: 18px; height: 18px; top: -9px; left: 0; }
 .heart6::after { width: 18px; height: 18px; top: 0; left: 9px; }
@@ -68,13 +86,12 @@ body {
 }
 .shooting-star::before {
     content: ''; position: absolute; top: 50%; right: 0; transform: translateY(-50%);
-    width: 4px; height: 4px; background: #fff; border-radius: 50%;
-    box-shadow: 0 0 10px 3px rgba(255, 209, 220, 0.8);
+    width: 4px; height: 4px; background: #fff; border-radius: 50%; box-shadow: 0 0 10px 3px rgba(255, 209, 220, 0.8);
 }
 .star-2 { top: 30%; left: -10%; animation-delay: 2.5s; animation-duration: 6s; }
 
 /* =========================================
-   Swinging Lantern (Soft Rose Gold)
+   Swinging Lantern
    ========================================= */
 .lantern-container {
     position: absolute; top: 0; right: 15%; display: flex; flex-direction: column;
@@ -83,61 +100,51 @@ body {
 .lantern-chain { width: 2px; height: 80px; background-color: #e8a5b2; }
 .lantern { display: flex; flex-direction: column; align-items: center; }
 .lantern-top {
-    width: 20px; height: 0; border-bottom: 25px solid #e8a5b2;
-    border-left: 15px solid transparent; border-right: 15px solid transparent; border-radius: 5px 5px 0 0;
+    width: 20px; height: 0; border-bottom: 25px solid #e8a5b2; border-left: 15px solid transparent; border-right: 15px solid transparent; border-radius: 5px 5px 0 0;
 }
 .lantern-body {
-    width: 46px; height: 60px; background-color: rgba(255, 209, 220, 0.05);
-    border: 3px solid #e8a5b2; border-radius: 8px; position: relative;
-    display: flex; justify-content: center; align-items: center;
-    box-shadow: inset 0 0 15px rgba(255, 170, 175, 0.2);
+    width: 46px; height: 60px; background-color: rgba(255, 209, 220, 0.05); border: 3px solid #e8a5b2; border-radius: 8px; position: relative;
+    display: flex; justify-content: center; align-items: center; box-shadow: inset 0 0 15px rgba(255, 170, 175, 0.2);
 }
 .lantern-candle {
     width: 12px; height: 20px; background-color: #ffdae0; border-radius: 50% 50% 20% 20%;
-    box-shadow: 0 0 20px 10px rgba(255, 138, 164, 1), 0 0 40px 20px rgba(224, 107, 133, 0.8);
-    animation: flicker 1.5s infinite alternate;
+    box-shadow: 0 0 20px 10px rgba(255, 138, 164, 1), 0 0 40px 20px rgba(224, 107, 133, 0.8); animation: flicker 1.5s infinite alternate;
 }
 .lantern-base { width: 30px; height: 12px; background-color: #e8a5b2; border-radius: 0 0 5px 5px; margin-top: -2px; }
 
 /* =========================================
-   Soft Rose Moon
+   Delayed Animations (Triggered after click)
    ========================================= */
 .moon {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 140px; height: 140px; border-radius: 50%;
-    box-shadow: 25px 15px 0 0 #ffbcc0; opacity: 0;
-    animation: moonRise 3s ease-out 0.5s forwards;
+    width: 140px; height: 140px; border-radius: 50%; box-shadow: 25px 15px 0 0 #ffbcc0; opacity: 0;
 }
 .moon::before {
     content: ''; position: absolute; top: 15px; left: 25px; width: 100%; height: 100%;
     border-radius: 50%; box-shadow: 0 0 70px 25px rgba(255, 170, 175, 0.4);
 }
+/* ONLY animate the moon when the unboxed class is added */
+body.unboxed .moon {
+    animation: moonRise 3s ease-out 0.5s forwards;
+}
 
-/* =========================================
-   Glassmorphism Card & Text
-   ========================================= */
 .greeting-card {
     position: absolute; top: 65%; left: 50%; transform: translate(-50%, 0);
-    width: 85%; max-width: 500px;
-    background: rgba(255, 209, 220, 0.04);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 209, 220, 0.18); padding: 35px 45px;
-    border-radius: 20px; text-align: center; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
-    opacity: 0; animation: fadeInCard 2s ease-out 2.5s forwards; z-index: 10;
+    width: 85%; max-width: 500px; background: rgba(255, 209, 220, 0.04);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 209, 220, 0.18);
+    padding: 35px 45px; border-radius: 20px; text-align: center; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5); opacity: 0; z-index: 10;
 }
+/* ONLY animate the card when the unboxed class is added */
+body.unboxed .greeting-card {
+    animation: fadeInCard 2s ease-out 2.5s forwards;
+}
+
 .romantic-greeting {
-    font-family: 'Playfair Display', serif; 
-    font-size: 2.8rem; 
-    font-weight: 600; color: #ffaaaf; 
-    margin: 0 0 15px 0; letter-spacing: 1px; line-height: 1.2;
-    animation: textPulse 3s infinite alternate 4s;
+    font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 600; color: #ffaaaf; 
+    margin: 0 0 15px 0; letter-spacing: 1px; line-height: 1.2; animation: textPulse 3s infinite alternate 4s;
 }
 .sub-greeting {
-    font-size: 1.1rem; font-weight: 300; color: #f2dfe2; 
-    margin: 0; letter-spacing: 1px; line-height: 1.5;
-}
-.audio-hint {
-    font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 20px;
+    font-size: 1.1rem; font-weight: 300; color: #f2dfe2; margin: 0; letter-spacing: 1px; line-height: 1.5;
 }
 
 /* =========================================
@@ -155,11 +162,7 @@ body {
 /* =========================================
    Animations
    ========================================= */
-@keyframes floatUp {
-    0% { bottom: -10%; transform: rotate(-45deg) scale(0.8); opacity: 0; }
-    20% { opacity: 0.8; }
-    100% { bottom: 110%; transform: rotate(-45deg) scale(1.2); opacity: 0; }
-}
+@keyframes floatUp { 0% { bottom: -10%; transform: rotate(-45deg) scale(0.8); opacity: 0; } 20% { opacity: 0.8; } 100% { bottom: 110%; transform: rotate(-45deg) scale(1.2); opacity: 0; } }
 @keyframes moonRise { 0% { top: 65%; opacity: 0; } 100% { top: 35%; opacity: 1; } }
 @keyframes fadeInCard { 0% { opacity: 0; transform: translate(-50%, 20px); } 100% { opacity: 1; transform: translate(-50%, 0); } }
 @keyframes textPulse { 0% { text-shadow: 0 0 10px rgba(255, 170, 175, 0.4); } 100% { text-shadow: 0 0 25px rgba(255, 170, 175, 1); } }
@@ -169,7 +172,7 @@ body {
 @keyframes shooting { 0% { transform: rotate(-35deg) translateX(0); opacity: 1; } 30% { opacity: 1; } 100% { transform: rotate(-35deg) translateX(1500px); opacity: 0; } }
 
 /* =========================================
-   Mobile Responsiveness (Phones & Tablets)
+   Mobile Responsiveness
    ========================================= */
 @media (max-width: 768px) {
     .greeting-card { width: 85%; padding: 25px 20px; top: 60%; }
