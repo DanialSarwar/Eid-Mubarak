@@ -51,31 +51,31 @@
         <div class="star star7"></div>
 
         <div class="greeting-card">
-            <h1 class="romantic-greeting">Eid Mubarak, <span id="recipient-name">My Love</span></h1>
+            <h1 class="romantic-greeting">Eid Mubarak, <span id="recipient-name">A Custom Name, e.g., 'Ayaan'</span></h1>
             <p class="sub-greeting">May our days be filled with endless light, joy, and each other.</p>
         </div>
         
     </div>
 
     <script>
-        // --- Feature 3: The Custom Name Trick ---
-        // This looks at the web address for "?to=Name"
+        // --- Custom Name Trick (Updates name based on URL parameters) ---
+        // Looks for "?to=Name" in the web address
         const urlParams = new URLSearchParams(window.location.search);
         const customName = urlParams.get('to');
         
         if (customName) {
-            // If a name is found, capitalize the first letter and update the card!
+            // Capitalize the first letter and update the card!
             const formattedName = customName.charAt(0).toUpperCase() + customName.slice(1);
             document.getElementById('recipient-name').innerText = formattedName;
         }
 
-        // --- Feature 1: The Unboxing Reveal ---
+        // --- Unboxing Reveal Script ---
         const introScreen = document.getElementById('intro-screen');
         const openBtn = document.getElementById('open-btn');
         const audio = document.getElementById('bg-music');
 
         openBtn.addEventListener('click', function() {
-            audio.play(); // Start the music
+            audio.play(); // Start the music smoothly
             introScreen.style.opacity = '0'; // Fade out the intro screen
             
             // Wait 1 second for the fade, then remove it completely
@@ -83,11 +83,11 @@
                 introScreen.style.display = 'none';
             }, 1000);
             
-            // Add a class to the body to trigger the moon and card animations!
+            // Add a class to the body to trigger the unboxing animations!
             document.body.classList.add('unboxed');
         });
 
-        // --- Feature 2: Magic Touch Sparkles ---
+        // --- Magic Touch Sparkles Script ---
         function createSparkle(x, y) {
             const sparkle = document.createElement('div');
             sparkle.className = 'magic-sparkle';
@@ -95,12 +95,13 @@
             sparkle.style.top = y + 'px';
             document.body.appendChild(sparkle);
             
-            // Remove the sparkle after it fades out
+            // Remove the sparkle after its animation fades out
             setTimeout(() => { sparkle.remove(); }, 800);
         }
 
         // Create sparkles when a mouse moves
         document.addEventListener('mousemove', function(e) {
+            // Adjust the random check (0.4) to increase or decrease sparkle density
             if(Math.random() > 0.4) createSparkle(e.clientX, e.clientY);
         });
 
